@@ -8,7 +8,7 @@ TaskFlow is a high-performance, full-stack task management application built wit
 - **Runtime**: Node.js & TypeScript
 - **Framework**: Express.js
 - **ORM**: Prisma
-- **Database**: SQLite (Development) / PostgreSQL (Production ready)
+- **Database**: SQLite (Development)
 - **Security**: JWT (Access & Refresh Tokens), bcrypt password hashing
 - **Validation**: Zod
 
