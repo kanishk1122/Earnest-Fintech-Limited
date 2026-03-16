@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TaskFlow: Professional Task Management System
 
-## Getting Started
+TaskFlow is a high-performance, full-stack task management application built with a modern technology stack. It provides users with a seamless experience for organizing their personal tasks with secure authentication and advanced management features.
 
-First, run the development server:
+## 🚀 Technical Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Backend API
+- **Runtime**: Node.js & TypeScript
+- **Framework**: Express.js
+- **ORM**: Prisma
+- **Database**: SQLite (Development) / PostgreSQL (Production ready)
+- **Security**: JWT (Access & Refresh Tokens), bcrypt password hashing
+- **Validation**: Zod
+
+### Frontend Web App
+- **Framework**: Next.js 15+ (App Router)
+- **Language**: TypeScript
+- **Styling**: Vanilla CSS (Premium custom design system)
+- **Icons**: Lucide React
+- **Notifications**: React Hot Toast
+- **API Client**: Axios with automatic interceptors for token refresh
+
+## ✨ Key Features
+
+- **Advanced Search & Filtering**: Real-time debounced search by title/description and status filtering.
+- **Robust Authentication**: Secure registration, login, and silent token refresh logic.
+- **Dynamic Dashboard**: Responsive task list with elegant card designs and status toggling.
+- **Pagination System**: Efficient server-side pagination with batch loading.
+- **Premium UI/UX**: Custom-crafted aesthetics including glassmorphism, smooth transitions, and dark/light mode foundations.
+
+## 🛠️ Project Structure
+
+```text
+/
+├── backend/            # Express.js Server
+│   ├── prisma/         # Schema and Migrations
+│   ├── src/
+│   │   ├── controllers/# Business Logic
+│   │   ├── middleware/ # Auth & Validation
+│   │   ├── routes/     # API Endpoints
+│   │   └── utils/      # Shared Utilities
+├── frontend/           # Next.js Application
+│   ├── src/
+│   │   ├── app/        # Pages & Layouts
+│   │   ├── components/ # Reusable UI Components
+│   │   ├── context/    # Global State (Auth)
+│   │   ├── hooks/      # Custom Hooks (Debounce)
+│   │   └── lib/        # API Client Config
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚥 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Installation
 
-## Learn More
+1. **Clone the repository** (or navigate to the project folder).
+2. **Setup Backend**:
+   ```bash
+   cd backend
+   npm install
+   # Create a .env file with DATABASE_URL, ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET
+   npx prisma db push
+   npm run dev
+   ```
+3. **Setup Frontend**:
+   ```bash
+   cd frontend
+   npm install
+   # Create a .env.local with NEXT_PUBLIC_API_URL=http://localhost:5000
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+## 📂 Documentation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Full Walkthrough**: [project_walkthrough.md](file:///C:/Users/kansihk%20soni/.gemini/antigravity/brain/008bcd14-feec-4188-abe2-b600f2e6cf42/project_walkthrough.md)
+- **Backend API Endpoints**:
+  - `POST /auth/register` - User Registration
+  - `POST /auth/login` - User Login (returns tokens)
+  - `POST /auth/refresh` - Refresh Access Token
+  - `GET /tasks` - Fetch Paginated/Filtered Tasks
+  - `POST /tasks` - Create Task
+  - `PATCH /tasks/:id` - Update Task
+  - `DELETE /tasks/:id` - Delete Task
+  - `PATCH /tasks/:id/toggle` - Toggle Completion Status
